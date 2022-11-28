@@ -16,30 +16,30 @@
 //BLOCK
 //code for lower case letter array where each letter is separate string, var = lcArray
 
-var alphabet = ["a, b, c, d, e, f, g, h, i, j ,k , l, m, n, o, p, q, r, s, t, u, v, x, y, z"]
-// console.log(alphabet);
-var lcArray =alphabet.toString().split(",") //This is my lowercase letter array 
-console.log(lcArray)
-// var inclLowerCase = confirm('Would you like to include lower case letters.'); //prompt user to include lower case letters
+// var alphabet = ["a, b, c, d, e, f, g, h, i, j ,k , l, m, n, o, p, q, r, s, t, u, v, x, y, z"]
+// // console.log(alphabet);
+// var lcArray =alphabet.toString().split(",") //This is my lowercase letter array 
+// console.log(lcArray)
+// // var inclLowerCase = confirm('Would you like to include lower case letters.'); //prompt user to include lower case letters
 
-// var for Upper Case Array. Use upCaseArray for for loop
-var upCaseArray = alphabet.toString().toUpperCase().split(",");
-console.log(upCaseArray);
-//BlOCK
+// // var for Upper Case Array. Use upCaseArray for for loop
+// var upCaseArray = alphabet.toString().toUpperCase().split(",");
+// console.log(upCaseArray);
+// //BlOCK
 
-//array for special characters
-var specChar = [
-  "!, @, #, $, %, ^, &, *, (, ), -, _, =, +, `, ~, <, ., >, ?, :, ;, [, {, ], }, ,"
-]
-var specChar1 = specChar.toString().split(','); //variable to use for forloop
-console.log(specChar1); 
-//Block
+// //array for special characters
+// var specChar = [
+//   "!, @, #, $, %, ^, &, *, (, ), -, _, =, +, `, ~, <, ., >, ?, :, ;, [, {, ], }, ,"
+// ]
+// var specChar1 = specChar.toString().split(','); //variable to use for forloop
+// console.log(specChar1); 
+// //Block
 
-//array for numbers
-//BLOCK
-var num = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']; //array for number character
-console.log(num);
-//BLOCK
+// //array for numbers
+// //BLOCK
+// var num = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']; //array for number character
+// console.log(num);
+// //BLOCK
 
 
 
@@ -65,12 +65,35 @@ function writePassword(
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
-var promptuser = function(){
-  prompt('How many characters do you want your password to be in? ');
-  confirm('Would you like to include lower case letters in your password?');
-  confirm('Would you like to include upper case letters in your password?');
-  confirm('Would you like to include special characters in your password?');
-  confirm('Would you like to include numbers in your password?')
+var promptUser = function(){
+
+  var length = parseInt(prompt('How many characters do you want your password to be? '));
+  
+  if(length > 128|| length < 8){
+    alert('Password must be a numeric number between 8-128');
+   length = prompt('How many characters do you want your password to be? ')
+  }
+  console.log(length);
+  var incLowerCase = confirm('Would you like to include lower case letters in your password?');
+  var incUpperCase = confirm('Would you like to include upper case letters in your password?');
+  var incSpecial = confirm('Would you like to include special characters in your password?');
+  var incNumbers = confirm('Would you like to include numbers in your password?')
+
+
+
+  console.log(incLowerCase);
+  console.log(incUpperCase);
+  console.log(incSpecial);
+  console.log(incNumbers);
+
+if(
+  incLowerCase ===false &&
+  incNumbers === false &&
+  incSpecial === false &&
+  incUpperCase === false 
+){
+promptUser()
+}
 }
 
-promptuser();
+promptUser();
