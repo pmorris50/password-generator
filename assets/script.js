@@ -41,13 +41,13 @@ var numberArray = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
 
 function userOptions () {
 
-  var length = parseInt(prompt('How many characters do you want your password to be? '));
-  if (Number.isNaN(length)) {
+  var passLength = parseInt(prompt('How many characters do you want your password to be? '));
+  if (Number.isNaN(passLength)) {
     alert('Password must be a numeric number');
     return null;
   }
 
-  if (length > 128 || length < 8) {
+  if (passLength > 128 || passLength < 8) {
     alert('Password must be a numeric number between 8-128');
     return null;
   }
@@ -78,15 +78,15 @@ function userOptions () {
   }
   //object that stores users inputs
   var passwordCriteria = {
-    length: length,
+    passLength: passLength,
     incLowerCase: incLowerCase,
     incNumbers: incNumbers,
     incUpperCase: incUpperCase,
     incSpecial: incSpecial
     
   };
-  // console.log(passwordCriteria);
-  // return passwordCriteria;
+  //console.log(passwordCriteria);
+  return passwordCriteria;
   
 
 // If something happens return this elsie if this is met return this
@@ -104,10 +104,10 @@ function shufArray(arr){
 
 
 function generatePassword(){
-var userChoice = userOptions();
-var acceptedCharacters = [];
-var guaranteeCharacters =[];
-var results = [];
+var userChoice = userOptions(); //what did the user select
+var acceptedCharacters = []; //combines arrays of what user selected 
+var guaranteeCharacters =[]; //pulls 1 character from each user selection
+var results = []; //characters that will go in the password
 
 //if user did not select do nothing
 if(!userChoice) 
@@ -116,39 +116,50 @@ return null;
 if(userChoice.incLowerCase){
   acceptedCharacters = acceptedCharacters.concat(lcArray);
   guaranteeCharacters.push(shufArray(lcArray));
- 
+  //return acceptedCharacters;
 
-
- };
- if(userChoice.incUpperCase){
+};
+if(userChoice.incUpperCase){
   acceptedCharacters = acceptedCharacters.concat(upCaseArray)
   guaranteeCharacters.push(shufArray(upCaseArray));
+  //return acceptedCharacters;
   
 };
 if(userChoice.incNumbers){
   acceptedCharacters = acceptedCharacters.concat(numberArray);
   guaranteeCharacters.push(shufArray(numberArray));
+  //return acceptedCharacters;
 }
 if(userChoice.incSpecial){
   acceptedCharacters = acceptedCharacters.concat(specCharArray);
   guaranteeCharacters.push(shufArray(specCharArray));
+  //return acceptedCharacters;
 }
 
-//return(guaranteeCharacters);
-for (var i = 0; i < length; i++){
-    randomInteger
 
 
 
+
+//for loop to grab password character length from acceptedCharacters
+ for (var i = 0; i < userChoice.passLength; i++){
+  //results.push(shufArray(guaranteeCharacters));
+  results.push(shufArray(acceptedCharacters));
+  //console.log(results);
+ }
+ for (var i=0; i<guaranteeCharacters; i++){
+  
+ }
+return results.join('');
 }
-console.log(randomInteger);
-}
-// console.log(generatePassword());
+//console.log(generatePassword);
+
+
 
 var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
+
  
 
 
