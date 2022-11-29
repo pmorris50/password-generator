@@ -147,7 +147,7 @@ if(userChoice.incSpecial){
   //console.log(results);
  }
  for (var i=0; i<guaranteeCharacters; i++){
-  
+  //not sure how to push into results array without going over .passLength
  }
 return results.join('');
 }
